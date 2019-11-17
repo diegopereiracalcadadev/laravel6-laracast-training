@@ -1,4 +1,7 @@
-<table>
+@extends('layout')
+
+@section('content')
+<table class="table">
     <thead>
         <tr>
             <th>#</th>
@@ -20,9 +23,8 @@
             <td>{{$user->email}}</td>
             <td>{{$user->password}}</td>
         </tr>
-
-     
         @endforeach
 
     </tbody>
 </table>
+@endsection
