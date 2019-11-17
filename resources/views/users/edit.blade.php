@@ -9,12 +9,12 @@
         <input id="name" name="name" class="form-control" />
     </div>
     <div class="form-group">
-        <label for="name">Login</label>
-        <input id="name" name="name" class="form-control" />
+        <label for="login">Login</label>
+        <input id="login" name="login" class="form-control" />
     </div>
     <div class="form-group">
-        <label for="name">CPF</label>
-        <input id="name" name="name" class="form-control" />
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" class="form-control" />
     </div>
     <div class="form-buttons">
         <button type="submit" class="btn btn-default">Cancelar</button>

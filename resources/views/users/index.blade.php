@@ -5,11 +5,12 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>name</th>
-            <th>login</th>
-            <th>cpf</th>
-            <th>email</th>
-            <th>password</th>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +22,8 @@
             <td>{{$user->login}}</td>
             <td>{{$user->cpf}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->password}}</td>
+            <td><a href="/users/edit" title="Editar" class="oi oi-pencil"></a> </td>
+            <td><a href="/users/edit" title="Editar" class="oi oi-x"></a></td>
         </tr>
         @endforeach
 

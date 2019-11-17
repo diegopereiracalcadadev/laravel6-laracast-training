@@ -9,6 +9,8 @@
     
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
+
+    <link href="iconic/css/open-iconic-bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -19,15 +21,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Livros <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Usuários</a>
+                <a href="#" class="nav-item nav-link {{ Request::path() === 'books' ? 'active' : ''  }}" 
+                        >Livros <span class="sr-only">(current)</span></a>
+                <a href="#" class="nav-item nav-link {{ Request::path() === 'users' ? 'active' : ''  }}" 
+                        >Usuários</a>
             </div>
         </div>
     </nav>
     <div class="container">
-
        @yield('content')
-       
     </div>
     <script src="jquery/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
