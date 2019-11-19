@@ -21,9 +21,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link {{ Request::path() === 'books' ? 'active' : ''  }}" 
+                <a href="/books" class="nav-item nav-link {{ Request::is('books*') ? 'active' : ''  }}" 
                         >Livros <span class="sr-only">(current)</span></a>
-                <a href="#" class="nav-item nav-link {{ Request::path() === 'users' ? 'active' : ''  }}" 
+                <a href="/users" class="nav-item nav-link {{ Request::is('users*') ? 'active' : ''  }}" 
                         >Usuários</a>
             </div>
         </div>

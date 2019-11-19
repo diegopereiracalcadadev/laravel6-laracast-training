@@ -30,7 +30,13 @@
             <td>{{$user->cpf}}</td>
             <td>{{$user->email}}</td>
             <td><a href="/users/{{ $user->id }}/edit" title="Editar" class="oi oi-pencil"></a> </td>
-            <td><a href="/users/{{ $user->id }}/delete" title="Editar" class="oi oi-x"></a></td>
+            <td>
+                <form method="POST" action="/users/{{$user->id}}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit"><span  class="oi oi-x"></span></button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </tbody>

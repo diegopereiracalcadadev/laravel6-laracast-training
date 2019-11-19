@@ -33,6 +33,18 @@ class UserController extends Controller
         ]);
     }
 
+    public function update(User $user){
+        $user->update($this->validateParameters());
+
+        return redirect('/users');
+    }
+
+    public function destroy(User $user){
+        $user->delete($user);
+
+        return redirect('/users');
+    }
+
     public function validateParameters(){
         $validatedParameters = request()->validate([
             'name' => 'required',

@@ -1,23 +1,42 @@
 @extends('layout')
 
 @section('content')
-<form action="">
-    <input id="id" value="{{$user !== null ? $user->id : ''}}" type="hidden" />
-
+<form method="POST" action="/users/{{$user->id}}">
+    @method('PUT')
+    @csrf
+    
     <div class="form-group">
         <label for="name">Nome</label>
-        <input id="name" name="name" value="{{$user !== null ? $user->name : ''}}" class="form-control" />
+        <input id="name" name="name" value="{{old('name') === null ? $user->name : old('name')}}"
+            class="form-control @error('name') error @enderror" />
+        @error('name')<p class="error"> {{$errors->first('name')}} </p>@enderror
     </div>
     <div class="form-group">
         <label for="login">Login</label>
-        <input id="login" name="login" value="{{$user !== null ? $user->login : ''}}" class="form-control" />
+        <input id="login" name="login" value="{{old('login') === null ? $user->login : old('login')}}"
+            class="form-control @error('login') error @enderror" />
+            @error('login')<p class="error"> {{$errors->first('login')}} </p>@enderror
     </div>
     <div class="form-group">
         <label for="cpf">CPF</label>
-        <input id="cpf" name="cpf" value="{{$user !== null ? $user->cpf : ''}}" class="form-control" />
+        <input id="cpf" name="cpf" value="{{old('cpf') === null ? $user->cpf : old('cpf')}}"
+            class="form-control @error('cpf') error @enderror" />
+            @error('cpf')<p class="error">{{ $errors->first('cpf') }}</p>@enderror
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" value="{{old('email') === null ? $user->email : old('email')}}"
+            class="form-control @error('email') error @enderror" />
+            @error('email')<p class="error">{{ $errors->first('email') }}</p>@enderror
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" value="{{old('password') === null ? $user->password : old('password')}}" 
+            type="password" class="form-control @error('password') error @enderror" />
+            @error('password')<p class="error">{{ $errors->first('password') }}</p>@enderror
     </div>
     <div class="form-buttons">
-        <button onclick="window.location.href='google.com'" type="submit" class="btn btn-default">Cancelar</button>
+        <a  class="btn btn-default" href="/users">Cancelar</a>
         <button type="submit" class="btn btn-primary">Gravar</button>
     </div>
 </form>
