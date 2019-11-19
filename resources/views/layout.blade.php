@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WEB Livro Plus</title>
     
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
 
-    <link href="iconic/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    <link href="/iconic/css/open-iconic-bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,8 +31,8 @@
     <div class="container">
        @yield('content')
     </div>
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

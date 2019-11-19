@@ -1,4 +1,18 @@
-.form-buttons > button{
+.form-buttons > button,
+.form-buttons > a {
     float: right;
     margin-left: 15px;
+}
+
+input.error{
+    border: 1px solid red;
+}
+
+p.error,
+a.error{
+    color: red;
+}
+
+.btn-default{
+    background-color: rgb(221, 221, 221);
 }
