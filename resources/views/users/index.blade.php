@@ -34,7 +34,7 @@
                 <form method="POST" action="/users/{{$user->id}}">
                     @method('DELETE')
                     @csrf
-                    <button type="submit"><span  class="oi oi-x"></span></button>
+                    <button type="submit" class="icon-button"><span  class="oi oi-x"></span></button>
                 </form>
             </td>
         </tr>

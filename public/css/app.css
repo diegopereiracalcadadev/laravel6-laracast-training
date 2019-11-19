@@ -16,3 +16,10 @@ a.error{
 .btn-default{
     background-color: rgb(221, 221, 221);
 }
+
+.icon-button{
+    border: none;
+    background: transparent;
+    color: #0056b3;
+    cursor: pointer;
+}
