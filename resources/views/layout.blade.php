@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/app.css" />
 
     <link href="/iconic/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+
+    @yield('head')
 </head>
 
 <body>
@@ -33,6 +35,7 @@
     </div>
     <script src="/jquery/jquery-3.4.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    @yield('scripts')
 </body>
 
 </html>
