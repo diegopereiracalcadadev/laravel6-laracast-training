@@ -22,6 +22,24 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->timestamps();
         });
+
+        Schema::create('books', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('ISBN');
+            $table->timestamps();
+        });
+
+        Schema::create('readings', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('book_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+        });
+
+
     }
 
     /**
@@ -31,6 +49,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('readings');
+        Schema::dropIfExists('books');
         Schema::dropIfExists('users');
+
     }
 }
