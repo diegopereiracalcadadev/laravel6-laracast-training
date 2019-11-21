@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::resource('/users', 'UserController');
 Route::resource('/books', 'BookController');
+
+Route::post('/readings', 'ReadingController@store');
+Route::post('/readings/delete', 'ReadingController@destroy');

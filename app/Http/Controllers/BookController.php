@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Book;
+use  DB;
 
 class BookController extends Controller
 {
     public function index(){
-        return view('books.index', [
-            'books' => Book::all()
-        ]);
+        $sql = "select 
+                    *,
+                    (select 'checked' from ufrj.readings r where r.book_id = b.id ) as readed
+                from 
+                    ufrj.books b";
+        $books = DB::select($sql);
+
+        return view('books.index', compact('books'));
     }
 
     public function create(){
@@ -18,8 +24,6 @@ class BookController extends Controller
     }
 
     public function store(){
-        // $book = $this->validateBook();
-        // dd( $book );
         Book::create($this->validateBook());
 
         return redirect('/books');

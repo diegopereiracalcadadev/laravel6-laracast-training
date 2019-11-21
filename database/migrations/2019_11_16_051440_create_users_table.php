@@ -35,6 +35,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('book_id');
 
+            $table->unique(['user_id', 'book_id']);
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });

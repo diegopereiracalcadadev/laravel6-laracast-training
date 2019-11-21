@@ -27,7 +27,7 @@
     </thead>
     <tbody>
         @foreach($books as $book)
-        <tr>
+        <tr data-id="{{$book->id}}">
             <td>{{$book->id}}</td>
             <td>{{$book->title}}</td>
             <td>{{$book->ISBN}}</td>
@@ -40,7 +40,7 @@
                 </form>
             </td>
             <td>
-                <input name="readed" type="checkbox" checked data-toggle="toggle" data-on="Lido" data-off="Não lido" data-onstyle="success" data-offstyle="default">
+                <input name="readed" type="checkbox" {{$book->readed}} data-toggle="toggle" data-on="Lido" data-off="Não lido" data-onstyle="success" data-offstyle="default">
             </td>
             <td>
                 <input name="wished" type="checkbox" checked data-toggle="toggle" data-on="Desejado" data-off="Não desejado" data-onstyle="success" data-offstyle="default">
@@ -53,4 +53,62 @@
 
 @section('scripts')
     <script src="bootstrap4-toggle/js/bootstrap4-toggle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+           registerAllReadingsOnChange();
+        });
+
+        function registerAllReadingsOnChange(){
+            console.log('doc carregou');
+            var elems = document.getElementsByName('readed');
+            for(var i=0; i < elems.length; i++){
+                elems[i].onchange = readingOnChangeHandler
+            }
+        }
+
+        function readingOnChangeHandler(e){
+            console.log("trocou estado", e.target.checked);
+            var bookId = e.target.closest("tr").getAttribute('data-id');
+            if(e.target.checked){
+                checkAsReaded(bookId);
+            } else {
+                checkAsUnreaded(bookId);
+            }
+        }
+
+        function checkAsReaded(bookId){
+            console.log("checkAsReaded...");
+            var data = new FormData();
+            data.append('user_id', 1);
+            data.append('book_id', bookId);
+
+            sendPost("/readings", data);
+        }
+
+        function checkAsUnreaded(bookId){
+            console.log("checkAsUnreaded...");
+            var data = new FormData();
+            data.append('user_id', 1);
+            data.append('book_id', bookId);
+
+            sendPost("/readings/delete", data);
+        }
+
+        function sendRequest(url, method, data, callback){
+            var req = new XMLHttpRequest();
+            req.onload = callback;
+            req.open(method, url, true);
+            req.send(data);
+        }
+
+        function sendPost(url, data, callback){
+            sendRequest(url, "post", data, callback);
+        }
+
+        function sendDelete(url, data, callback){
+            sendRequest(url, "delete", data, callback);
+        }
+
+
+    </script>
 @endsection
