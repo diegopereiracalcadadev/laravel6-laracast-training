@@ -20,3 +20,6 @@ Route::resource('/books', 'BookController');
 
 Route::post('/readings', 'ReadingController@store');
 Route::post('/readings/delete', 'ReadingController@destroy');
+
+Route::post('/wishes', 'WishController@store');
+Route::post('/wishes/delete', 'WishController@destroy');

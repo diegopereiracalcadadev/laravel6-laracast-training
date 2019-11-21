@@ -43,7 +43,7 @@
                 <input name="readed" type="checkbox" {{$book->readed}} data-toggle="toggle" data-on="Lido" data-off="Não lido" data-onstyle="success" data-offstyle="default">
             </td>
             <td>
-                <input name="wished" type="checkbox" checked data-toggle="toggle" data-on="Desejado" data-off="Não desejado" data-onstyle="success" data-offstyle="default">
+                <input name="wished" type="checkbox" {{$book->wished}} data-toggle="toggle" data-on="Desejado" data-off="Não desejado" data-onstyle="success" data-offstyle="default">
             </td>
         </tr>
         @endforeach
@@ -55,43 +55,41 @@
     <script src="bootstrap4-toggle/js/bootstrap4-toggle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-           registerAllReadingsOnChange();
+           registerAllOnChanges('readed', readedOnChangeHandler);
+           registerAllOnChanges('wished', wishedOnChangeHandler);
         });
 
-        function registerAllReadingsOnChange(){
-            console.log('doc carregou');
-            var elems = document.getElementsByName('readed');
+        function registerAllOnChanges(fieldName, handlerFn){
+            var elems = document.getElementsByName(fieldName);
             for(var i=0; i < elems.length; i++){
-                elems[i].onchange = readingOnChangeHandler
+                elems[i].onchange = handlerFn
             }
         }
 
-        function readingOnChangeHandler(e){
-            console.log("trocou estado", e.target.checked);
+        function readedOnChangeHandler(e){
             var bookId = e.target.closest("tr").getAttribute('data-id');
             if(e.target.checked){
-                checkAsReaded(bookId);
+                sendFieldChangedRequest(bookId, "/readings");
             } else {
-                checkAsUnreaded(bookId);
+                sendFieldChangedRequest(bookId, "/readings/delete");
             }
         }
 
-        function checkAsReaded(bookId){
-            console.log("checkAsReaded...");
-            var data = new FormData();
-            data.append('user_id', 1);
-            data.append('book_id', bookId);
-
-            sendPost("/readings", data);
+        function wishedOnChangeHandler(e){
+            var bookId = e.target.closest("tr").getAttribute('data-id');
+            if(e.target.checked){
+                sendFieldChangedRequest(bookId, "/wishes");
+            } else {
+                sendFieldChangedRequest(bookId, "/wishes/delete");
+            }
         }
 
-        function checkAsUnreaded(bookId){
-            console.log("checkAsUnreaded...");
+        function sendFieldChangedRequest(bookId, url){
             var data = new FormData();
             data.append('user_id', 1);
             data.append('book_id', bookId);
 
-            sendPost("/readings/delete", data);
+            sendPost(url, data);
         }
 
         function sendRequest(url, method, data, callback){
@@ -108,7 +106,5 @@
         function sendDelete(url, data, callback){
             sendRequest(url, "delete", data, callback);
         }
-
-
     </script>
 @endsection

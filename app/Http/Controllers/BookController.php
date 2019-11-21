@@ -11,7 +11,8 @@ class BookController extends Controller
     public function index(){
         $sql = "select 
                     *,
-                    (select 'checked' from ufrj.readings r where r.book_id = b.id ) as readed
+                    (select 'checked' from ufrj.readings r where r.book_id = b.id ) as readed,
+                    (select 'checked' from ufrj.wishes w where w.book_id = b.id ) as wished
                 from 
                     ufrj.books b";
         $books = DB::select($sql);
