@@ -21,8 +21,8 @@
             <th>ISBN</th>
             <th>Editar</th>
             <th>Excluir</th>
-            <th>Leituras</th>
-            <th>Desejos</th>
+            <th>Lista de Leituras</th>
+            <th>Lista de Desejos</th>
         </tr>
     </thead>
     <tbody>
