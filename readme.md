@@ -12,3 +12,8 @@ Na pasta onde o projeto foi clonado:
 - composer install
 - php artisan migrate
 - php artisan serve
+
+- Abrir o navegador em: localhost:8000
+- Clicar em Criar Conta 
+
+Observação: o Firefox v;70 está apresentando bug na criação da conta de usuário. No Chrome está homologado 100%.
