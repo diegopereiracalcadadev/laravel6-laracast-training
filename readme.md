@@ -4,5 +4,8 @@
 
 
 - git clone
-- npm run dev (na pasta onde o projeto foi clonado)
+
+Na pasta onde o projeto foi clonado:
+
+- npm run dev 
 - php artisan serve
