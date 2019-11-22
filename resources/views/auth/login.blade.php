@@ -46,7 +46,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
+                                <a href="{{ route('register') }}" class="nav-link" style="display:inline-block">Criar Conta</a>
                                
                             </div>
                         </div>
