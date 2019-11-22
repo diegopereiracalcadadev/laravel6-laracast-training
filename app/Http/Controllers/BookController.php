@@ -11,10 +11,10 @@ class BookController extends Controller
     public function index(){
         $sql = "select 
                     *,
-                    ( select 'checked' from ufrj.readings r where r.book_id = b.id and r.user_id = ? ) as readed,
-                    ( select 'checked' from ufrj.wishes w where w.book_id = b.id and w.user_id = ? ) as wished
+                    ( select 'checked' from readings r where r.book_id = b.id and r.user_id = ? ) as readed,
+                    ( select 'checked' from wishes w where w.book_id = b.id and w.user_id = ? ) as wished
                 from 
-                    ufrj.books b";
+                    books b";
         $books = DB::select($sql, [
             \Auth::user()->id, 
             \Auth::user()->id
