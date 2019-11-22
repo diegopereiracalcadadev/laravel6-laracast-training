@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('login');
-            $table->string('cpf');
+            $table->string('login')->nullable();
+            $table->string('cpf')->nullable();
             $table->string('email');
             $table->string('password');
             $table->timestamps();
@@ -62,6 +62,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('wishes');
         Schema::dropIfExists('readings');
         Schema::dropIfExists('books');
         Schema::dropIfExists('users');

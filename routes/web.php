@@ -12,14 +12,21 @@
 */
 
 Route::get('/', function () {
-    return redirect('/users');
+    return redirect('/books');
 });
 
-Route::resource('/users', 'UserController');
-Route::resource('/books', 'BookController');
+Route::resource('/users', 'UserController')->middleware('auth');
+
+Route::resource('/books', 'BookController')->middleware('auth');
 
 Route::post('/readings', 'ReadingController@store');
 Route::post('/readings/delete', 'ReadingController@destroy');
 
 Route::post('/wishes', 'WishController@store');
 Route::post('/wishes/delete', 'WishController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')
+    ->name('home')
+    ->middleware('auth');
