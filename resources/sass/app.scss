@@ -6,3 +6,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'vendor/bootstrap4-toggle/css/bootstrap4-toggle.min.css';
+
+.icon-button{
+    border: none;
+    background: transparent;
+    color: #0056b3;
+    cursor:pointer;
+}
+
+.btn-default{
+    background-color: rgb(221, 221, 221);
+}
