@@ -86,7 +86,7 @@
 
         function sendFieldChangedRequest(bookId, url){
             var data = new FormData();
-            data.append('user_id', 1);
+            data.append('user_id', document.getElementById('user_id').value);
             data.append('book_id', bookId);
 
             sendPost(url, data);

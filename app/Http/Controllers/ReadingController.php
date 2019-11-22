@@ -26,13 +26,13 @@ class ReadingController extends Controller
         return response()->json([ 'status' => 1], 200);
     }
 
-    public function destroy(){
+    public function destroy(){ 
         $id = DB::table('readings')
             ->where('user_id', '=', request('user_id'))
             ->where('book_id', '=', request('book_id'))
             ->delete();
 
-        return response()->json([ 'success' => true], 200);
+        return response()->json([ 'status' => 1], 200);
     }
 
 }
